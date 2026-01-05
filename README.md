@@ -54,7 +54,7 @@ docker compose up --build
 
 2. Access the application
 
-Open your browser at http://localhost:8080/
+Open your browser at [http://localhost:8080/](http://localhost:8080/) or [https://localhost:8081/](https://localhost:8081/)
 
 ## Using the HTML Interface
 
@@ -98,7 +98,7 @@ docker exec -it team.blue-e2-php composer test
 docker exec -it team.blue-e2-php composer test-coverage
 ```
 
-The coverage report can be accessed via the browser at: http://localhost:8080/target/coverage/html/index.html
+The coverage report can be accessed via the browser at: [http://localhost:8080/coverage/](http://localhost:8080/coverage/)
 
 ### Test Coverage
 
