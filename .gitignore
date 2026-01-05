@@ -1,0 +1,10 @@
+# IDEs / Editors
+/.idea/
+/.vscode/
+
+# Logs
+*.log
+logs/
+
+# Composer
+/vendor/
