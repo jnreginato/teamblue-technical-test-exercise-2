@@ -1,0 +1,26 @@
+name: team.blue-e2
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: team.blue-e2-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8081:443"
+      - "8082:9001"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/log:/var/log/nginx
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: final
+    container_name: team.blue-e2-php
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+      - ./docker/php/log:/var/log
+      - ./docker/php/tmp:/tmp

@@ -1,0 +1,82 @@
+{
+  "name": "jnreginato/teamblue-technical-test-exercise-2",
+  "description": "Solution for Exercise 2 of the team.blue Technical Test.",
+  "license": "proprietary",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Jonatan Reginato",
+      "email": "jonatan.reginato@gmail.com",
+      "homepage": "https://github.com/jnreginato",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.4"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.48",
+    "friendsofphp/php-cs-fixer": "^v3.92",
+    "php-parallel-lint/php-parallel-lint": "^v1.4",
+    "phpmd/phpmd": "^2.15",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^12.5",
+    "slevomat/coding-standard": "^8.26",
+    "squizlabs/php_codesniffer": "^4.0",
+    "vimeo/psalm": "^6.14"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": [
+        "tests/unit",
+        "tests/integration"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true
+    },
+    "apcu-autoloader": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.4.16"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "scripts": {
+    "format": [
+      "XDEBUG_MODE=off phpcbf",
+      "XDEBUG_MODE=off php-cs-fixer fix"
+    ],
+    "lint": [
+      "XDEBUG_MODE=off parallel-lint ./bin ./public ./src ./templates ./tests",
+      "XDEBUG_MODE=off phpcs",
+      "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd ./ text phpmd-ruleset.xml",
+      "XDEBUG_MODE=off phpstan analyse --configuration=phpstan.neon",
+      "XDEBUG_MODE=off psalm --output-format=console --show-info=true"
+    ],
+    "paralel-lint": "XDEBUG_MODE=off parallel-lint ./bin ./public ./src ./templates ./tests",
+    "php-cs-fixer": "XDEBUG_MODE=off php-cs-fixer fix",
+    "php-cs-fixer-dry-run": "XDEBUG_MODE=off php-cs-fixer fix --dry-run --diff",
+    "phpcbf": "XDEBUG_MODE=off phpcbf",
+    "phpcs": "XDEBUG_MODE=off phpcs",
+    "phpmd": "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd ./ text phpmd-ruleset.xml",
+    "phpstan": "XDEBUG_MODE=off phpstan analyse --configuration=phpstan.neon",
+    "psalm": "XDEBUG_MODE=off psalm --output-format=console --show-info=true",
+    "psalm-dry-run": "XDEBUG_MODE=off psalm --alter --issues=all --dry-run",
+    "test": "./vendor/bin/phpunit --configuration phpunit.xml.dist --testsuite all-tests --display-warnings",
+    "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --configuration phpunit.xml.dist --testsuite all-tests --coverage-html target/coverage/html --coverage-clover target/coverage/clover.xml --coverage-text='target/coverage/coverage.txt' --coverage-php target/coverage/coverage.php --log-junit target/logs/junit.xml --log-teamcity target/logs/teamcity.txt",
+    "test-integration": "./vendor/bin/phpunit --configuration phpunit.xml.dist --testsuite integration-tests",
+    "test-unit": "./vendor/bin/phpunit --configuration phpunit.xml.dist --testsuite unit-tests"
+  }
+}
