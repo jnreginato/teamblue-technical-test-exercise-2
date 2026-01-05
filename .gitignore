@@ -8,3 +8,8 @@ logs/
 
 # Composer
 /vendor/
+/composer.lock
+
+/.php-cs-fixer.cache
+/.phpcs-cache.json
+/.phpunit.result.cache
